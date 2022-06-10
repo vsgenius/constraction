@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+{% block title %} Склады {% endblock %}
+        {% block content %}
+<body>
+<h2>Список складов</h2>
+    {% for warehouse in warehouses %}
+    <div>
+        <ul>
+        <a href="warehouses/{{ warehouse.id }}/">Склад: {{ warehouse.title }}</a>
+        </ul>
+    </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

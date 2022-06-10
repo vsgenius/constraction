@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+{% block title %}Добавление рейса{% endblock %}
+        {% block content %}
+    {% for track in tracks %}
+    <a href="{% url 'by_flights' track.pk %}">{{track.brand}}</a>
+     {% endfor %}
+ </div>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Добавить">
+    <p class="warning">{{answer}}</p>
+</form>
+{% endblock %}
+</body>
+</html>

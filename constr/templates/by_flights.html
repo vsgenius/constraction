@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+{% block title %} {{current_flight.date}} {% endblock %}
+        {% block content %}
+    <div>
+        <p>Рейс::{{current_flight.id}}</p>
+        <p>Самосвал::{{current_flight.truck_id}}</p>
+        <p>Карьер::{{current_flight.career_id}}</p>
+        <p>Склад::{{current_flight.warehouse_id}}</p>
+        <p>Вес::{{current_flight.weight}}</p>
+        <p>Координаты::{{current_flight.coordinates}}</p>
+        <p>Завершен::{{current_flight.completed}}</p>
+    </div>
+{% endblock %}
+</body>
+</html>

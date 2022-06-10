@@ -1,0 +1,24 @@
+header h1 {
+font-sixe:40pt;
+    text-transform: uppercase;
+    text-align: center;
+}
+nav {
+    font-size: 16pt;
+    width: 150px;
+    float: left;
+}
+nav a {
+    display: block;
+    margin: 10px 0px;
+}
+section {
+    margin-left: 170px;
+}
+form {
+    font-size: 12pt;
+}
+p _warning {
+    font-size: 16pt;
+    color: red;
+}

@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+{% block title %} Карьеры {% endblock %}
+        {% block content %}
+<body>
+<h2>Список карьеров</h2>
+    {% for career in careers %}
+    <div>
+        <ul>
+        <a href="careers/{{ career.id }}/">Карьер: {{ career.title }}</a>
+        </ul>
+    </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+{% block title %} Самосвалы {% endblock %}
+        {% block content %}
+<body>
+<h2>Список самосвалов</h2>
+    {% for truck in trucks %}
+    <div>
+        <ul>
+        <a href="trucks/{{ track.id }}/">Самосвал №: {{ truck.number }}</a>
+        </ul>
+    </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

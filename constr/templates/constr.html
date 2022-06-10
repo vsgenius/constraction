@@ -1,0 +1,12 @@
+{% extends "layout/basic.html" %}
+        {% block content %}
+    {% for flight in flights %}
+    <div>
+        <ul>
+        <a href="{{ flight.id }}/">Рейс №: {{ flight.id }}</a>
+        </ul>
+    </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

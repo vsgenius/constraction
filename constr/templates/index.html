@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+{% block title %} Главная {% endblock %}
+        {% block content %}
+<body>
+<h2>Список рейсов</h2>
+    {% for flight in flights %}
+    <div>
+        <ul>
+        <a href="flight/{{ flight.id }}/">Рейс №: {{ flight.id }}</a>
+        </ul>
+    </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
