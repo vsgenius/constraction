@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
@@ -54,7 +54,7 @@ def add_and_save(request):
         # print("{:.2f}".format(g['s12']))
         if flf.is_valid() and g['s12'] < 5:
             flf.save()
-            return HttpResponseRedirect(reverse('constr'))
+            return HttpResponseRedirect(reverse('index'))
         else:
             context = {'form': flf, 'answer': 'Координаты не соответствуют складу'}
             return render(request, 'create.html', context)
@@ -62,3 +62,22 @@ def add_and_save(request):
         flf = FlightsForm()
         context = {'form': flf}
         return render(request, 'create.html', context)
+
+
+def validate_geo(request):
+        coordinates = request.GET.get('coordinates',None)
+        warehouse_id = request.GET.get('warehouse_id', None)
+        warehouse = Warehouses.objects.filter(id=warehouse_id)[0].coordinates.split(',')
+        coordinates = coordinates.split(',')
+        geod = Geodesic.WGS84
+        g = geod.Inverse(float(coordinates[0]), float(coordinates[1]), float(warehouse[0]), float(warehouse[1]))
+        # print("{:.2f}".format(g['s12']))
+        if g['s12'] < 5:
+            response = {
+                'is_taken': True
+            }
+        else:
+            response = {
+                'is_taken': False
+            }
+        return JsonResponse(response)

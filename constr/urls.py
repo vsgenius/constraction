@@ -1,5 +1,5 @@
 from django.urls import path
-from constr.views import index, flight, add_and_save, trucks, careers, warehouses
+from constr.views import index, flight, add_and_save, trucks, careers, warehouses, validate_geo
 
 urlpatterns = [
     path('',index, name='index'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('careers/', careers, name='careers'),
     path('trucks/', trucks, name='trucks'),
     path('warehouses/', warehouses, name='warehouses'),
+    path('validate_geo/', validate_geo, name='validate_geo')
 ]

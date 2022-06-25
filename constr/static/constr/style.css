@@ -22,3 +22,6 @@ p _warning {
     font-size: 16pt;
     color: red;
 }
+.invalid-feedback d-block {
+    color: red;
+}

@@ -5,12 +5,38 @@
     <a href="{% url 'by_flights' track.pk %}">{{track.brand}}</a>
      {% endfor %}
  </div>
-<form method="post">
+<form id="form1" method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Добавить">
-    <p class="warning">{{answer}}</p>
+    <input id="check" type="button" value="проверить">
 </form>
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $('#check').click(function() {
+        $.ajax({
+            data: {'coordinates':id_coordinates.value,'warehouse_id':id_warehouse_id.value}, // get the form data
+            url: "{% url 'validate_geo' %}",
+            success: function(response) {
+                if (response.is_taken == true) {
+                 alert('Координаты верные!');
+            }
+            else {
+                alert(`Координаты ${id_coordinates.value} не соответствуют складу ${id_warehouse_id.value}!`);
+            }
+            },
+            error: function(response) {
+                // alert the error if any error occured
+                console.log(response.responseJSON.errors)
+            }
+        });
+    
+        return false;
+    });
+  </script>
+</script>
+{% endblock javascript %}
 {% endblock %}
 </body>
 </html>
