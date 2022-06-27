@@ -47,17 +47,8 @@ def flight(request, flights_id):
 def add_and_save(request):
     if request.method == 'POST':
         flf = FlightsForm(request.POST)
-        warehouse = Warehouses.objects.filter(id=int(flf.data['warehouse_id']))[0].coordinates.split(',')
-        coordinates = flf.data['coordinates'].split(',')
-        geod = Geodesic.WGS84
-        g = geod.Inverse(float(coordinates[0]), float(coordinates[1]), float(warehouse[0]), float(warehouse[1]))
-        # print("{:.2f}".format(g['s12']))
-        if flf.is_valid() and g['s12'] < 5:
-            flf.save()
-            return HttpResponseRedirect(reverse('index'))
-        else:
-            context = {'form': flf, 'answer': 'Координаты не соответствуют складу'}
-            return render(request, 'create.html', context)
+        flf.save()
+        return HttpResponseRedirect(reverse('index'))
     else:
         flf = FlightsForm()
         context = {'form': flf}
