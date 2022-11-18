@@ -24,6 +24,7 @@ class WarehousesSerializers(serializers.ModelSerializer):
 
 class FlightsSerializers(serializers.ModelSerializer):
 
+
     class Meta:
         model = Flights
         fields = '__all__'

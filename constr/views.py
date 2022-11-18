@@ -71,4 +71,4 @@ def validate_geo(request):
             response = {
                 'is_taken': False
             }
-        return JsonResponse(response)
+        return response.is_taken

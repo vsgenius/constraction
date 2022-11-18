@@ -12,6 +12,5 @@ router.register('careers',СareersViewSet,'shop')
 router.register('trucks',TrucksViewSet,'basket')
 router.register('warehouses',WarehousesViewSet,'orders')
 urlpatterns = [
-    path('',include(router.urls)),
-    path('validate_geo/', validate_geo, name='validate_geo')
+    path('',include(router.urls))
 ]
