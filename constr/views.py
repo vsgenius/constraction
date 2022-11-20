@@ -10,7 +10,7 @@ from constr.models import Flights, Trucks, Warehouses, Сareers
 def index(request):
     flights = Flights.objects.all()
     context = {'flights': flights}
-    return render(request, 'index.html', context)
+    return render(request, 'main.html', context)
 
 
 def trucks(request):
